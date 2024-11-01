@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Drinking Water Habit Tracker</string>
+    <string name="daily_water_intake">Daily Water Intake</string>
+    <string name="glasses_count">%1$d of %2$d glasses</string>
+    <string name="drunk">Drunk</string>
+    <string name="reset_progress">Reset Progress</string>
+    <string name="water_tracker">Water Tracker</string>
+    <string name="day_night">Day Night</string>
+</resources>
