@@ -14,37 +14,55 @@
         android:background="?attr/colorPrimary"
         app:menu="@menu/menu_main"
         app:title="@string/water_tracker"
-        app:titleCentered="true"
-        app:titleTextColor="@android:color/white" />
+        app:titleCentered="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
-        <!-- Header Section -->
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/daily_water_intake"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+        android:paddingTop="16dp">
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="8"
-            android:progress="0" />
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="16dp"
+            app:strokeColor="@color/white">
 
-        <TextView
-            android:id="@+id/glassCount"
-            android:layout_width="wrap_content"
+            <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/glasses_count"
-            android:textSize="16sp" />
+                android:background="#E2EEF5">
+
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:indeterminate="false"
+                    android:max="8"
+                    android:progress="4"
+                    app:indicatorColor="#1361B4"
+                    app:indicatorSize="200dp"
+                    app:trackCornerRadius="10dp"
+                    app:trackThickness="15dp" />
+
+
+                <TextView
+                    android:id="@+id/glassCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/glasses_count"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- RecyclerView for Glass List -->
         <androidx.recyclerview.widget.RecyclerView
@@ -57,8 +75,12 @@
             tools:listitem="@layout/item_glass" />
 
         <!-- Reset Button -->
-        <Button
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/resetProgress"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="20dp"
+            android:contentDescription="@string/reset_progress"
+            android:src="@drawable/ic_reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/reset_progress" />
