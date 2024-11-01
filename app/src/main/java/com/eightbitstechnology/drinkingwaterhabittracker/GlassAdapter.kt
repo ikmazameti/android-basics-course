@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eightbitstechnology.drinkingwaterhabittracker.databinding.ItemGlassBinding
 
 class GlassAdapter(private val onCheckedChange: (Int, Boolean) -> Unit) :
-    ListAdapter<Glass, GlassAdapter.GlassViewHolder>(GlassDiff) {
+    ListAdapter<Glass, GlassAdapter.GlassViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GlassViewHolder {
         val binding = ItemGlassBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -41,7 +41,7 @@ class GlassAdapter(private val onCheckedChange: (Int, Boolean) -> Unit) :
 
     }
 
-    object GlassDiff : DiffUtil.ItemCallback<Glass>() {
+    object DiffCallback : DiffUtil.ItemCallback<Glass>() {
         override fun areItemsTheSame(oldItem: Glass, newItem: Glass): Boolean = oldItem === newItem
 
         override fun areContentsTheSame(oldItem: Glass, newItem: Glass): Boolean =

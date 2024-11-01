@@ -7,14 +7,19 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import com.eightbitstechnology.drinkingwaterhabittracker.databinding.ActivityMainBinding
+import nl.dionsegijn.konfetti.core.Party
+import nl.dionsegijn.konfetti.core.Position
+import nl.dionsegijn.konfetti.core.emitter.Emitter
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity(), MenuProvider {
     private lateinit var binding: ActivityMainBinding
@@ -59,10 +64,6 @@ class MainActivity : AppCompatActivity(), MenuProvider {
         binding.glasses.adapter = glassAdapter
         glassAdapter.submitList(glasses)
 
-        binding.resetProgress.setOnClickListener {
-            resetProgress()
-        }
-
     }
 
     private fun loadProgress() {
@@ -85,6 +86,10 @@ class MainActivity : AppCompatActivity(), MenuProvider {
         val count = glasses.count { it.isDrunk }
         binding.progressBar.progress = count
         binding.glassCount.text = getString(R.string.glasses_count, count, 8)
+        // Trigger confetti animation if all glasses are completed
+        if (count == 8) {
+            showConfetti()
+        }
     }
 
     private fun resetProgress() {
@@ -135,6 +140,11 @@ class MainActivity : AppCompatActivity(), MenuProvider {
                 true
             }
 
+            R.id.resetProgress -> {
+                resetProgress()
+                true
+            }
+
             else -> false
         }
     }
@@ -174,5 +184,11 @@ class MainActivity : AppCompatActivity(), MenuProvider {
         } else {
             menuItem.setIcon(R.drawable.ic_night)
         }
+    }
+
+
+    private fun showConfetti() {
+        // TODO: show well done msg
+
     }
 }

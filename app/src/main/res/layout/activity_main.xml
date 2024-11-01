@@ -16,6 +16,11 @@
         app:title="@string/water_tracker"
         app:titleCentered="true" />
 
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id="@+id/konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -47,7 +52,7 @@
                     android:max="8"
                     android:progress="4"
                     app:indicatorColor="#1361B4"
-                    app:indicatorSize="200dp"
+                    app:indicatorSize="150dp"
                     app:trackCornerRadius="10dp"
                     app:trackThickness="15dp" />
 
@@ -68,22 +73,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/glasses"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
             android:paddingTop="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_glass" />
 
-        <!-- Reset Button -->
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/resetProgress"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="20dp"
-            android:contentDescription="@string/reset_progress"
-            android:src="@drawable/ic_reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/reset_progress" />
     </LinearLayout>
 </LinearLayout>
 
